@@ -1,0 +1,16 @@
+D:\RPA22\vajajaj\vajajaj\bin\Debug\AdventureWorksLT2012_Data.mdf
+D:\RPA22\vajajaj\vajajaj\bin\Debug\AdventureWorksLT2012_Data_log.ldf
+D:\RPA22\vajajaj\vajajaj\bin\Debug\BazaZaVaje.mdf
+D:\RPA22\vajajaj\vajajaj\bin\Debug\BazaZaVaje_log.ldf
+D:\RPA22\vajajaj\vajajaj\bin\Debug\vajajaj.exe.config
+D:\RPA22\vajajaj\vajajaj\bin\Debug\vajajaj.exe
+D:\RPA22\vajajaj\vajajaj\bin\Debug\vajajaj.pdb
+D:\RPA22\vajajaj\vajajaj\bin\Debug\EntityFramework.dll
+D:\RPA22\vajajaj\vajajaj\bin\Debug\EntityFramework.SqlServer.dll
+D:\RPA22\vajajaj\vajajaj\bin\Debug\EntityFramework.xml
+D:\RPA22\vajajaj\vajajaj\bin\Debug\EntityFramework.SqlServer.xml
+D:\RPA22\vajajaj\vajajaj\obj\Debug\vajajaj.csproj.AssemblyReference.cache
+D:\RPA22\vajajaj\vajajaj\obj\Debug\vajajaj.csproj.CoreCompileInputs.cache
+D:\RPA22\vajajaj\vajajaj\obj\Debug\vajajaj.csproj.CopyComplete
+D:\RPA22\vajajaj\vajajaj\obj\Debug\vajajaj.exe
+D:\RPA22\vajajaj\vajajaj\obj\Debug\vajajaj.pdb
