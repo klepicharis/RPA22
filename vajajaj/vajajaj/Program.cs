@@ -10,7 +10,7 @@ namespace vajajaj
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("pozdravljen svet");
+            Console.WriteLine("pozdravljen svet!");
             Console.ReadLine();
         }
     }
