@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="IzvedbaMentor">
+          <Key>
+            <PropertyRef Name="Izvedba" />
+            <PropertyRef Name="Mentor" />
+          </Key>
+          <Property Name="Izvedba" Type="int" Nullable="false" />
+          <Property Name="Mentor" Type="int" Nullable="false" />
+          <Property Name="brezveze" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Mentor">
+          <Key>
+            <PropertyRef Name="MenId" />
+          </Key>
+          <Property Name="MenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenIme" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenPriimek" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenSlika" Type="image" />
+          <Property Name="MenVloga" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenNaziv" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenUstanova" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PlanDejavnosti">
+          <Key>
+            <PropertyRef Name="PlaId" />
+          </Key>
+          <Property Name="PlaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PlaOpis" Type="nvarchar(max)" />
+          <Property Name="PlaŠtDijakov" Type="int" />
+          <Property Name="PlaCilji" Type="nvarchar(max)" />
+          <Property Name="PlaTrajanje" Type="nvarchar" MaxLength="50" />
+          <Property Name="PlaPodročje" Type="int" />
+        </EntityType>
+        <EntityType Name="PlanSodelavci">
+          <Key>
+            <PropertyRef Name="PlaID" />
+            <PropertyRef Name="MenID" />
+          </Key>
+          <Property Name="PlaID" Type="int" Nullable="false" />
+          <Property Name="MenID" Type="int" Nullable="false" />
+          <Property Name="brezveze" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_IzvedbaMentor_Mentor">
+          <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IzvedbaMentor" Type="Self.IzvedbaMentor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mentor">
+              <PropertyRef Name="MenId" />
+            </Principal>
+            <Dependent Role="IzvedbaMentor">
+              <PropertyRef Name="Mentor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanSodelavci_Mentor">
+          <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mentor">
+              <PropertyRef Name="MenId" />
+            </Principal>
+            <Dependent Role="PlanSodelavci">
+              <PropertyRef Name="MenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanSodelavci_PlanDejavnosti">
+          <End Role="PlanDejavnosti" Type="Self.PlanDejavnosti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanDejavnosti">
+              <PropertyRef Name="PlaId" />
+            </Principal>
+            <Dependent Role="PlanSodelavci">
+              <PropertyRef Name="PlaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="IzvedbaMentor" EntityType="Self.IzvedbaMentor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mentor" EntityType="Self.Mentor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanDejavnosti" EntityType="Self.PlanDejavnosti" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanSodelavci" EntityType="Self.PlanSodelavci" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_IzvedbaMentor_Mentor" Association="Self.FK_IzvedbaMentor_Mentor">
+            <End Role="Mentor" EntitySet="Mentor" />
+            <End Role="IzvedbaMentor" EntitySet="IzvedbaMentor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanSodelavci_Mentor" Association="Self.FK_PlanSodelavci_Mentor">
+            <End Role="Mentor" EntitySet="Mentor" />
+            <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanSodelavci_PlanDejavnosti" Association="Self.FK_PlanSodelavci_PlanDejavnosti">
+            <End Role="PlanDejavnosti" EntitySet="PlanDejavnosti" />
+            <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="IzvedbaMentor">
+          <Key>
+            <PropertyRef Name="Izvedba" />
+            <PropertyRef Name="Mentor" />
+          </Key>
+          <Property Name="Izvedba" Type="Int32" Nullable="false" />
+          <Property Name="Mentor" Type="Int32" Nullable="false" />
+          <Property Name="brezveze" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Mentor1" Relationship="Self.FK_IzvedbaMentor_Mentor" FromRole="IzvedbaMentor" ToRole="Mentor" />
+        </EntityType>
+        <EntityType Name="Mentor">
+          <Key>
+            <PropertyRef Name="MenId" />
+          </Key>
+          <Property Name="MenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenIme" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenPriimek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenSlika" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MenVloga" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenNaziv" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenUstanova" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Guid" />
+          <NavigationProperty Name="IzvedbaMentor" Relationship="Self.FK_IzvedbaMentor_Mentor" FromRole="Mentor" ToRole="IzvedbaMentor" />
+          <NavigationProperty Name="PlanSodelavci" Relationship="Self.FK_PlanSodelavci_Mentor" FromRole="Mentor" ToRole="PlanSodelavci" />
+        </EntityType>
+        <EntityType Name="PlanDejavnosti">
+          <Key>
+            <PropertyRef Name="PlaId" />
+          </Key>
+          <Property Name="PlaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PlaOpis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlaŠtDijakov" Type="Int32" />
+          <Property Name="PlaCilji" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlaTrajanje" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PlaPodročje" Type="Int32" />
+          <NavigationProperty Name="PlanSodelavci" Relationship="Self.FK_PlanSodelavci_PlanDejavnosti" FromRole="PlanDejavnosti" ToRole="PlanSodelavci" />
+        </EntityType>
+        <EntityType Name="PlanSodelavci">
+          <Key>
+            <PropertyRef Name="PlaID" />
+            <PropertyRef Name="MenID" />
+          </Key>
+          <Property Name="PlaID" Type="Int32" Nullable="false" />
+          <Property Name="MenID" Type="Int32" Nullable="false" />
+          <Property Name="brezveze" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Mentor" Relationship="Self.FK_PlanSodelavci_Mentor" FromRole="PlanSodelavci" ToRole="Mentor" />
+          <NavigationProperty Name="PlanDejavnosti" Relationship="Self.FK_PlanSodelavci_PlanDejavnosti" FromRole="PlanSodelavci" ToRole="PlanDejavnosti" />
+        </EntityType>
+        <Association Name="FK_IzvedbaMentor_Mentor">
+          <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="IzvedbaMentor" Type="Self.IzvedbaMentor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mentor">
+              <PropertyRef Name="MenId" />
+            </Principal>
+            <Dependent Role="IzvedbaMentor">
+              <PropertyRef Name="Mentor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanSodelavci_Mentor">
+          <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mentor">
+              <PropertyRef Name="MenId" />
+            </Principal>
+            <Dependent Role="PlanSodelavci">
+              <PropertyRef Name="MenID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PlanSodelavci_PlanDejavnosti">
+          <End Role="PlanDejavnosti" Type="Self.PlanDejavnosti" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanDejavnosti">
+              <PropertyRef Name="PlaId" />
+            </Principal>
+            <Dependent Role="PlanSodelavci">
+              <PropertyRef Name="PlaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="IzvedbaMentor" EntityType="Self.IzvedbaMentor" />
+          <EntitySet Name="Mentor" EntityType="Self.Mentor" />
+          <EntitySet Name="PlanDejavnosti" EntityType="Self.PlanDejavnosti" />
+          <EntitySet Name="PlanSodelavci" EntityType="Self.PlanSodelavci" />
+          <AssociationSet Name="FK_IzvedbaMentor_Mentor" Association="Self.FK_IzvedbaMentor_Mentor">
+            <End Role="Mentor" EntitySet="Mentor" />
+            <End Role="IzvedbaMentor" EntitySet="IzvedbaMentor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanSodelavci_Mentor" Association="Self.FK_PlanSodelavci_Mentor">
+            <End Role="Mentor" EntitySet="Mentor" />
+            <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PlanSodelavci_PlanDejavnosti" Association="Self.FK_PlanSodelavci_PlanDejavnosti">
+            <End Role="PlanDejavnosti" EntitySet="PlanDejavnosti" />
+            <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="IzvedbaMentor">
+            <EntityTypeMapping TypeName="Model.IzvedbaMentor">
+              <MappingFragment StoreEntitySet="IzvedbaMentor">
+                <ScalarProperty Name="Izvedba" ColumnName="Izvedba" />
+                <ScalarProperty Name="Mentor" ColumnName="Mentor" />
+                <ScalarProperty Name="brezveze" ColumnName="brezveze" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mentor">
+            <EntityTypeMapping TypeName="Model.Mentor">
+              <MappingFragment StoreEntitySet="Mentor">
+                <ScalarProperty Name="MenId" ColumnName="MenId" />
+                <ScalarProperty Name="MenIme" ColumnName="MenIme" />
+                <ScalarProperty Name="MenPriimek" ColumnName="MenPriimek" />
+                <ScalarProperty Name="MenSlika" ColumnName="MenSlika" />
+                <ScalarProperty Name="MenVloga" ColumnName="MenVloga" />
+                <ScalarProperty Name="MenNaziv" ColumnName="MenNaziv" />
+                <ScalarProperty Name="MenUstanova" ColumnName="MenUstanova" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanDejavnosti">
+            <EntityTypeMapping TypeName="Model.PlanDejavnosti">
+              <MappingFragment StoreEntitySet="PlanDejavnosti">
+                <ScalarProperty Name="PlaId" ColumnName="PlaId" />
+                <ScalarProperty Name="PlaOpis" ColumnName="PlaOpis" />
+                <ScalarProperty Name="PlaŠtDijakov" ColumnName="PlaŠtDijakov" />
+                <ScalarProperty Name="PlaCilji" ColumnName="PlaCilji" />
+                <ScalarProperty Name="PlaTrajanje" ColumnName="PlaTrajanje" />
+                <ScalarProperty Name="PlaPodročje" ColumnName="PlaPodročje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanSodelavci">
+            <EntityTypeMapping TypeName="Model.PlanSodelavci">
+              <MappingFragment StoreEntitySet="PlanSodelavci">
+                <ScalarProperty Name="PlaID" ColumnName="PlaID" />
+                <ScalarProperty Name="MenID" ColumnName="MenID" />
+                <ScalarProperty Name="brezveze" ColumnName="brezveze" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

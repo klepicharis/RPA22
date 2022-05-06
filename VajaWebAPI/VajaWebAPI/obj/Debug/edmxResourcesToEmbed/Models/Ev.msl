@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="IzvedbaMentor">
+      <EntityTypeMapping TypeName="Model.IzvedbaMentor">
+        <MappingFragment StoreEntitySet="IzvedbaMentor">
+          <ScalarProperty Name="Izvedba" ColumnName="Izvedba" />
+          <ScalarProperty Name="Mentor" ColumnName="Mentor" />
+          <ScalarProperty Name="brezveze" ColumnName="brezveze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mentor">
+      <EntityTypeMapping TypeName="Model.Mentor">
+        <MappingFragment StoreEntitySet="Mentor">
+          <ScalarProperty Name="MenId" ColumnName="MenId" />
+          <ScalarProperty Name="MenIme" ColumnName="MenIme" />
+          <ScalarProperty Name="MenPriimek" ColumnName="MenPriimek" />
+          <ScalarProperty Name="MenSlika" ColumnName="MenSlika" />
+          <ScalarProperty Name="MenVloga" ColumnName="MenVloga" />
+          <ScalarProperty Name="MenNaziv" ColumnName="MenNaziv" />
+          <ScalarProperty Name="MenUstanova" ColumnName="MenUstanova" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanDejavnosti">
+      <EntityTypeMapping TypeName="Model.PlanDejavnosti">
+        <MappingFragment StoreEntitySet="PlanDejavnosti">
+          <ScalarProperty Name="PlaId" ColumnName="PlaId" />
+          <ScalarProperty Name="PlaOpis" ColumnName="PlaOpis" />
+          <ScalarProperty Name="PlaŠtDijakov" ColumnName="PlaŠtDijakov" />
+          <ScalarProperty Name="PlaCilji" ColumnName="PlaCilji" />
+          <ScalarProperty Name="PlaTrajanje" ColumnName="PlaTrajanje" />
+          <ScalarProperty Name="PlaPodročje" ColumnName="PlaPodročje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanSodelavci">
+      <EntityTypeMapping TypeName="Model.PlanSodelavci">
+        <MappingFragment StoreEntitySet="PlanSodelavci">
+          <ScalarProperty Name="PlaID" ColumnName="PlaID" />
+          <ScalarProperty Name="MenID" ColumnName="MenID" />
+          <ScalarProperty Name="brezveze" ColumnName="brezveze" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

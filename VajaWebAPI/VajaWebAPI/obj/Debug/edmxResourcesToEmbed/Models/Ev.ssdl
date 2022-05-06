@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="IzvedbaMentor">
+    <Key>
+      <PropertyRef Name="Izvedba" />
+      <PropertyRef Name="Mentor" />
+    </Key>
+    <Property Name="Izvedba" Type="int" Nullable="false" />
+    <Property Name="Mentor" Type="int" Nullable="false" />
+    <Property Name="brezveze" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Mentor">
+    <Key>
+      <PropertyRef Name="MenId" />
+    </Key>
+    <Property Name="MenId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MenIme" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenPriimek" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenSlika" Type="image" />
+    <Property Name="MenVloga" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenNaziv" Type="nvarchar" MaxLength="50" />
+    <Property Name="MenUstanova" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PlanDejavnosti">
+    <Key>
+      <PropertyRef Name="PlaId" />
+    </Key>
+    <Property Name="PlaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlaOpis" Type="nvarchar(max)" />
+    <Property Name="PlaŠtDijakov" Type="int" />
+    <Property Name="PlaCilji" Type="nvarchar(max)" />
+    <Property Name="PlaTrajanje" Type="nvarchar" MaxLength="50" />
+    <Property Name="PlaPodročje" Type="int" />
+  </EntityType>
+  <EntityType Name="PlanSodelavci">
+    <Key>
+      <PropertyRef Name="PlaID" />
+      <PropertyRef Name="MenID" />
+    </Key>
+    <Property Name="PlaID" Type="int" Nullable="false" />
+    <Property Name="MenID" Type="int" Nullable="false" />
+    <Property Name="brezveze" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_IzvedbaMentor_Mentor">
+    <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="IzvedbaMentor" Type="Self.IzvedbaMentor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mentor">
+        <PropertyRef Name="MenId" />
+      </Principal>
+      <Dependent Role="IzvedbaMentor">
+        <PropertyRef Name="Mentor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanSodelavci_Mentor">
+    <End Role="Mentor" Type="Self.Mentor" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mentor">
+        <PropertyRef Name="MenId" />
+      </Principal>
+      <Dependent Role="PlanSodelavci">
+        <PropertyRef Name="MenID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanSodelavci_PlanDejavnosti">
+    <End Role="PlanDejavnosti" Type="Self.PlanDejavnosti" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PlanSodelavci" Type="Self.PlanSodelavci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlanDejavnosti">
+        <PropertyRef Name="PlaId" />
+      </Principal>
+      <Dependent Role="PlanSodelavci">
+        <PropertyRef Name="PlaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="IzvedbaMentor" EntityType="Self.IzvedbaMentor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mentor" EntityType="Self.Mentor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlanDejavnosti" EntityType="Self.PlanDejavnosti" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlanSodelavci" EntityType="Self.PlanSodelavci" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_IzvedbaMentor_Mentor" Association="Self.FK_IzvedbaMentor_Mentor">
+      <End Role="Mentor" EntitySet="Mentor" />
+      <End Role="IzvedbaMentor" EntitySet="IzvedbaMentor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanSodelavci_Mentor" Association="Self.FK_PlanSodelavci_Mentor">
+      <End Role="Mentor" EntitySet="Mentor" />
+      <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanSodelavci_PlanDejavnosti" Association="Self.FK_PlanSodelavci_PlanDejavnosti">
+      <End Role="PlanDejavnosti" EntitySet="PlanDejavnosti" />
+      <End Role="PlanSodelavci" EntitySet="PlanSodelavci" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

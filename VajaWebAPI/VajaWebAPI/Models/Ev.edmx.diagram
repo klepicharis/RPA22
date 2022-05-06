@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="95b321872e28424dbfd8a5b0ba64e4af" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.IzvedbaMentor" Width="1.5" PointX="3.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Mentor" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlanDejavnosti" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PlanSodelavci" Width="1.5" PointX="3.875" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_IzvedbaMentor_Mentor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PlanSodelavci_Mentor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PlanSodelavci_PlanDejavnosti" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,7 @@
+D:\RPA22\Asihroni\Asihroni\bin\Debug\Asihroni.exe.config
+D:\RPA22\Asihroni\Asihroni\bin\Debug\Asihroni.exe
+D:\RPA22\Asihroni\Asihroni\bin\Debug\Asihroni.pdb
+D:\RPA22\Asihroni\Asihroni\obj\Debug\Asihroni.csproj.AssemblyReference.cache
+D:\RPA22\Asihroni\Asihroni\obj\Debug\Asihroni.csproj.CoreCompileInputs.cache
+D:\RPA22\Asihroni\Asihroni\obj\Debug\Asihroni.exe
+D:\RPA22\Asihroni\Asihroni\obj\Debug\Asihroni.pdb
