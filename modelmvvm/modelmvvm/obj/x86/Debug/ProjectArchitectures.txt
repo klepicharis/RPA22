@@ -1,0 +1,1 @@
+D:\RPA22\modelmvvm\modelmvvm\modelmvvm.csproj;x86

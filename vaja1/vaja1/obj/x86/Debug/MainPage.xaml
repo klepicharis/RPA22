@@ -1,0 +1,82 @@
+﻿<Page
+    x:Class="vaja1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:vaja1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+    <!--<StackPanel Orientation="Vertical" >
+            <TextBlock FontSize="48pt" Margin="10">Lorem Ipsum</TextBlock>
+        
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Margin="10" Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod erat ac augue vestibulum elementum. Maecenas sagittis consequat nibh. Fusce scelerisque nisi nec nulla vulputate, id cursus quam condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus tellus massa, elementum et justo condimentum, fermentum molestie dolor. Integer purus magna, vestibulum eget rutrum eget, pellentesque eu dolor. Fusce interdum diam vel tellus blandit, a vulputate orci dapibus. Nunc tempus mi sit amet porttitor finibus. Nullam iaculis sollicitudin volutpat. Fusce interdum pulvinar quam.
+
+Fusce congue lacus sapien, eget aliquam leo fermentum non. Sed quis pharetra orci, nec malesuada risus. Quisque semper nisl et lobortis iaculis. Etiam ornare pretium lacus ac tincidunt. Fusce aliquam massa et nunc accumsan bibendum. Ut euismod velit a commodo tincidunt. In vehicula scelerisque viverra. Duis blandit dolor ac hendrerit ultricies. Vivamus ullamcorper nisi elit, eu sagittis lacus iaculis id. Fusce finibus nisi vel suscipit volutpat. Curabitur euismod mi sodales tellus vehicula, quis malesuada eros suscipit. Donec fermentum sapien in odio dapibus eleifend. Morbi eleifend nunc vitae sodales tempus. Etiam aliquet ipsum in leo scelerisque varius. Sed tempor sodales libero et vestibulum."
+                       TextWrapping="Wrap" Width="250px"></TextBlock>
+                <TextBlock Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod erat ac augue vestibulum elementum. Maecenas sagittis consequat nibh. Fusce scelerisque nisi nec nulla vulputate, id cursus quam condimentum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus tellus massa, elementum et justo condimentum, fermentum molestie dolor. Integer purus magna, vestibulum eget rutrum eget, pellentesque eu dolor. Fusce interdum diam vel tellus blandit, a vulputate orci dapibus. Nunc tempus mi sit amet porttitor finibus. Nullam iaculis sollicitudin volutpat. Fusce interdum pulvinar quam.
+
+Fusce congue lacus sapien, eget aliquam leo fermentum non. Sed quis pharetra orci, nec malesuada risus. Quisque semper nisl et lobortis iaculis. Etiam ornare pretium lacus ac tincidunt. Fusce aliquam massa et nunc accumsan bibendum. Ut euismod velit a commodo tincidunt. In vehicula scelerisque viverra. Duis blandit dolor ac hendrerit ultricies. Vivamus ullamcorper nisi elit, eu sagittis lacus iaculis id. Fusce finibus nisi vel suscipit volutpat. Curabitur euismod mi sodales tellus vehicula, quis malesuada eros suscipit. Donec fermentum sapien in odio dapibus eleifend. Morbi eleifend nunc vitae sodales tempus. Etiam aliquet ipsum in leo scelerisque varius. Sed tempor sodales libero et vestibulum."
+                       TextWrapping="Wrap" Width="500px" Margin="10"></TextBlock>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="top">
+                    <Rectangle Fill="blue" Width="200" Height="220"></Rectangle>
+                    
+                
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Fill="red" Width="200" Height="100"></Rectangle>
+                    <Rectangle Fill="Yellow" Width="200" Height="100"></Rectangle>
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        
+           
+
+        </StackPanel>-->
+        <!--<RelativePanel MinHeight="300">
+            <Rectangle Width="100" Height="100" Fill="red" RelativePanel.AlignRightWithPanel="True" Name="rdeci"></Rectangle>
+            <Rectangle Width="50" Height="50" Fill="blue" RelativePanel.LeftOf="rdeci" Name="plavi"></Rectangle>
+            <Rectangle Width="50" Height="50" Fill="green" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWith="rdeci"  Name="zeleni"></Rectangle>
+            <Rectangle Width="100" Height="100" Fill="purple" RelativePanel.AlignVerticalCenterWithPanel="True" RelativePanel.AlignVerticalCenterWith="rdeci"  Name="zeleni"></Rectangle>
+        </RelativePanel>-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <RelativePanel>
+            <Button x:ConnectionId='4' Margin="0,0,10,0" Name="btnisci" Content="isci" RelativePanel.AlignRightWithPanel="True"/>
+            <TextBox x:ConnectionId='5'  Margin="0,0,10,0" Name="txtniz" RelativePanel.LeftOf="btnisci"/>
+            <TextBlock  Margin="0,0,10,0" Text="Iskanje: " RelativePanel.LeftOf="txtniz"  RelativePanel.AlignVerticalCenterWith="btnisci"/>
+            <TextBlock   Text="Naslov" FontSize="24" FontWeight="bold" />
+        </RelativePanel>
+        <StackPanel Grid.Row="1">
+        <SplitView x:ConnectionId='2' Name="mysplitview" CompactPaneLength="10" OpenPaneLength="50" DisplayMode="Inline">
+            <SplitView.Pane>
+                <StackPanel>
+                <TextBlock Text="prvi" />
+                <TextBlock Text="drugi" />
+                <TextBlock Text="tretji" />
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <StackPanel>
+                    <TextBlock Text="cetrti" />
+                    <TextBlock Text="peti" />
+                    <TextBlock Text="sesti" />
+                </StackPanel>
+            </SplitView.Content>
+            
+        </SplitView>
+        <Button x:ConnectionId='3' Content="klikni me"                      />
+        </StackPanel>
+
+    </Grid>
+
+
+
+
+
+</Page>
+
